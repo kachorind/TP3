@@ -34,11 +34,11 @@ def combattre(force_adversaire):
     else:
         print("Défaite !")
         nombre_defaites += 1
-        nombre_victoires_consecutives = 0
+        victoires_consecutives = 0
         niveau_vie -= force_adversaire
     
     print(f"Niveau de vie : {niveau_vie}")
-    print(f"Nombre de victoires consécutives : {nombre_victoires_consecutives}")
+    print(f"Nombre de victoires consécutives : {victoires_consecutives}")
 
 # Boucle principale du jeu
 while niveau_vie > 0:
@@ -46,18 +46,17 @@ while niveau_vie > 0:
     print(f"Vous tombez face à face avec un adversaire de difficulté : {force_adversaire}")
     menu()
     
-    choix = input("Entrez votre choix (1/2/3/4) : ")
+    choix = input("Entrez votre choix (1,2,3 ou 4) : ")
     
     if choix == "1":
         combattre(force_adversaire)
         
         # Vérifie si l'usager a remporté 3 victoires consécutives
-        if nombre_victoires_consecutives == 3:
-            print("Félicitations ! Vous avez remporté 3 victoires consécutives.")
-            print("Vous affrontez maintenant un adversaire spécial !")
+        if victoires_consecutives == 3:
+            print("Félicitations! Vous avez remporté 3 victoires consécutives.\nVous affrontez maintenant un adversaire spécial!")
             force_adversaire = random.randint(6, 15)  # Adversaire spécial plus puissant avec deux dés
             combattre(force_adversaire)
-            nombre_victoires_consecutives = 0
+            victoires_consecutives = 0
         
     elif choix == "2":
         print("Vous contournez l'adversaire et allez ouvrir une autre porte.\nMalheureusement, vous avez une pénalité de 1 point de vie…”)
@@ -71,8 +70,5 @@ while niveau_vie > 0:
         break
     
         
-    print(f"Adversaire : {force_adversaire}")
-    print(f"Nombre de victoires : {nombre_victoires} vs Nombre de défaites : {nombre_defaites}")
-
-
-
+    print(f"Adversaire: {force_adversaire}")
+    print(f"Nombre de victoires: {nombre_victoires} vs Nombre de défaites: {nombre_defaites}")
