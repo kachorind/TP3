@@ -88,7 +88,7 @@ while controlvar == 1:
 
         else:
             print(f"\nLa partie est terminée, vous avez vaincu {nombre_victoires} monstre(s).\nMerci et à la prochaine!")
-            break
+            exit()
 
     # Si le niveau de vie est 0        
     else:
