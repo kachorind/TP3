@@ -1,5 +1,5 @@
 # Devina Kachorin
-# 19 septembre 2023
+# 12 novembre 2023
 # TP3 - le combat des monstres
 
 import random
@@ -10,8 +10,6 @@ nombre_defaites = 0
 victoires_consecutives = 0
 numero_combat = 0
 numero_adversaire = 0
-controlvar = 1
-
 
 # Fonction pour afficher le menu de la partie
 def menu():
