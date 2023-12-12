@@ -55,42 +55,40 @@ def combattre(force_adversaire):
     print(f"Nombre de victoires consécutives: {victoires_consecutives}")
 
 # Boucle principale du jeu
-while controlvar == 1:
-    # Si le niveau de vie est plus grand que 0
-    if niveau_vie > 0:
-        force_adversaire = random.randint(2, 10)
-        print(f"\nVous tombez face à face avec un adversaire de difficulté: {force_adversaire}")
-        menu()
+while niveau_vie > 0:
+    force_adversaire = random.randint(2, 10)
+    print(f"\nVous tombez face à face avec un adversaire de difficulté: {force_adversaire}")
+    menu()
 
-        choix = input("Entrez votre choix (1,2,3 ou 4): ")
+    choix = input("Entrez votre choix (1,2,3 ou 4): ")
 
-        if choix == "1":
+    if choix == "1":
+        combattre(force_adversaire)
+
+        # Si l'usager a remporté 3 victoires consécutives
+        if victoires_consecutives == 3:
+            print("\nFélicitations! Vous avez remporté 3 victoires consécutives.\nVous affrontez maintenant un adversaire spécial!")
+            force_adversaire = random.randint(6, 15)
             combattre(force_adversaire)
+            victoires_consecutives = 0
 
-            # Si l'usager a remporté 3 victoires consécutives
-            if victoires_consecutives == 3:
-                print("\nFélicitations! Vous avez remporté 3 victoires consécutives.\nVous affrontez maintenant un adversaire spécial!")
-                force_adversaire = random.randint(6, 15)
-                combattre(force_adversaire)
-                victoires_consecutives = 0
+    elif choix == "2":
+        print("\nVous contournez l'adversaire et allez ouvrir une autre porte.\nMalheureusement,vous avez une pénalité de 1 point de vie…")
+        niveau_vie -= 1
 
-        elif choix == "2":
-            print("\nVous contournez l'adversaire et allez ouvrir une autre porte.\nMalheureusement,vous avez une pénalité de 1 point de vie…")
-            niveau_vie -= 1
+    elif choix == "3":
+        print("""
+        Pour réussir un combat, il faut que la somme des valeurs des dés lancés soit supérieure à la force de l'adversaire. 
+        Une défaite a lieu lorsque la somme des valeurs des dés lancés par vous-mêmes est inférieure ou égale à la force de l'adversaire.
+        La partie se termine lorsque vos points de vie tombent sous 0. 
+        Vous pouvez combattre ou éviter chaque adversaire, dans le cas de l'évitement, vous aurez une pénalité de 1 point de vie.
+        """)
 
-        elif choix == "3":
-            print("""
-            Pour réussir un combat, il faut que la somme des valeurs des dés lancés soit supérieure à la force de l'adversaire. 
-            Une défaite a lieu lorsque la somme des valeurs des dés lancés par vous-mêmes est inférieure ou égale à la force de l'adversaire.
-            La partie se termine lorsque vos points de vie tombent sous 0. 
-            Vous pouvez combattre ou éviter chaque adversaire, dans le cas de l'évitement, vous aurez une pénalité de 1 point de vie.
-            """)
-
-        else:
-            print(f"\nLa partie est terminée, vous avez vaincu {nombre_victoires} monstre(s).\nMerci et à la prochaine!")
-            exit()
-
-    # Si le niveau de vie est 0        
     else:
-        print(f"\nLa partie est terminée, car votre niveau de vie est de 0. \nVous avez vaincu {nombre_victoires} monstre(s). Voici une nouvelle partie!")
-        niveau_vie = 20
+        print(f"\nLa partie est terminée, vous avez vaincu {nombre_victoires} monstre(s).\nMerci et à la prochaine!")
+        exit()
+
+# Si le niveau de vie est 0        
+else:
+    print(f"\nLa partie est terminée, car votre niveau de vie est de 0. \nVous avez vaincu {nombre_victoires} monstre(s). Voici une nouvelle partie!")
+    niveau_vie = 20
